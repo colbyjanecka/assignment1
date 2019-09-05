@@ -9,20 +9,16 @@ public class Problem1 {
     public static void main(String[] args) throws IOException {
         Scanner inputScanner = new Scanner(System.in);                          // Creates scanner for getting inputs
 
-        System.out.print("Enter a number of adjacent digits to multiply: ");
-        int digitAmount = inputScanner.nextInt();                              // Gets number of adjacent digits
-
+        int digitAmount = 0;
         while (digitAmount > 20 || digitAmount < 2){                            // confirms that 2<=n<=20
-            System.out.print("Range must be between 2 and 20: ");
-            digitAmount = inputScanner.nextInt();
+            System.out.print("Enter a number of adjacent digits to multiply between 2 and 20: ");
+            digitAmount = inputScanner.nextInt();                              // Gets number of adjacent digits
         }
 
-        System.out.print("Enter string of 1000 digits: ");
-        String inputString = inputScanner.next();                               // Gets string of 1000 digits
-
+        String inputString = " ";
         while(inputString.length() != 1000){                                    // Confirms that s.length() = 1000
-            System.out.print("Incorrect amount of digits : ");
-            inputString = inputScanner.next();
+            System.out.print("Enter a string of exactly 1000 digits: ");
+            inputString = inputScanner.next();                                  // gets string of digits
         }
         BigInteger inputNumber = new BigInteger(inputString);                   // Creates BigInteger from input string
 
