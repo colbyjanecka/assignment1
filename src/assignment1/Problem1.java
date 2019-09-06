@@ -1,12 +1,11 @@
 /* Student Name: Colby Janecka,  Lab Section: Unique #16175 */
 
 package assignment1;
-import java.io.IOException;
 import java.math.BigInteger;
 import java.util.Scanner;
 
 public class Problem1 {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         Scanner inputScanner = new Scanner(System.in);                          // Creates scanner for getting inputs
 
         int digitAmount = 0;
@@ -22,9 +21,9 @@ public class Problem1 {
         }
         BigInteger inputNumber = new BigInteger(inputString);                   // Creates BigInteger from input string
 
-        int num = 0;
+        int num;
         int largest = 0;
-        int currentTotal = 1;
+        int currentTotal;
 
         while(inputNumber.intValue() != 0){                                     // loop that runs till end of #
 
