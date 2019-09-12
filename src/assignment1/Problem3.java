@@ -6,18 +6,14 @@ import edu.stanford.nlp.tagger.maxent.MaxentTagger;
 
 public class Problem3 {
 
-    public static void main(String[] args){
-
-        Scanner inputScanner = new Scanner(System.in);
-
-        System.out.print("Enter a sentence to have its part-of-speech tagged: ");
-        String userInput = inputScanner.nextLine();
+    public static String problem3(String s){
 
         MaxentTagger tagger = new MaxentTagger("taggers/english-left3words-distsim.tagger");
+                                                                        // Generate new tagger from stanford library
+        String taggedInput = tagger.tagString(s).trim();                // tag and trim string provided
 
-        String taggedInput = tagger.tagString(userInput);
-
-        System.out.println(taggedInput);
+        System.out.println(taggedInput);                                // print string to console
+        return(taggedInput);                                            //     and return it
 
 
     }

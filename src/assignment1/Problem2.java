@@ -1,40 +1,37 @@
 /* Student Name: Colby Janecka,  Lab Section: Unique #16175 */
 
 package assignment1;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Problem2 {
-    public static void main(String[] args){
+    public static String[] problem2(String s){
 
-        Scanner inputScanner = new Scanner(System.in);                          // Creates scanner for getting inputs
+        String [] words = s.split(" ");                     // split given string into array of words
 
-        System.out.print("Enter sentence less than 10^6 characters to check for $1.00 words! : ");
-        String s = inputScanner.nextLine();
+        String [] dollarWords = new String [words.length];         // create new array to store dollar words
+        int dollarWordsIndex = 0;
 
-        if(s.length() >= 10000000) {
-            System.out.print("Sentence must be less than 10^6 characters : ");
-            s = inputScanner.nextLine();
-        }
+        for (String word : words) {                                // goes through each word in the input ...
 
-
-        String [] words = s.split(" ");
-        String [] dollarWords = null;
-
-        for (String word : words) {
-
-            char [] chars = word.toLowerCase().toCharArray();
+            char [] chars = word.toLowerCase().toCharArray();      //  and creates an array of it
 
             int wordTotal = 0;
-            for(char ch : chars){
+            for(char ch : chars){                                  // breaks that array into a array of chars
                 int chInt = ch;
-                chInt -= 96;
-                if((chInt > 1) && (chInt < 26)){
-                    wordTotal += chInt;
+                chInt -= 96;                                       // gets value of character from ascii value
+                if((chInt >= 1) && (chInt <= 26)){                 // does nothing for special characters
+                    wordTotal += chInt;                            //   but adds value of alphabetic characters
                 }
             }
-            if(wordTotal == 100)
-                System.out.println(word);
+
+            if(wordTotal == 100) {                                  // adds dollar words to array of results
+                dollarWords[dollarWordsIndex] = word;
+                dollarWordsIndex += 1;
+                System.out.println(word);                           // and prints those to the console
+            }
 
         }
+        return(dollarWords);                                        //   as well as returns them.
     }
 }

@@ -1,0 +1,5 @@
+Problem 4:
+
+    During my time taking this course, I expect to learn about
+more efficient methods of solving problems with java, and hope to
+explore some graphical implementations as well.

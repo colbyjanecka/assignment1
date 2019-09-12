@@ -5,22 +5,11 @@ import java.math.BigInteger;
 import java.util.Scanner;
 
 public class Problem1 {
-    public static void main(String[] args) {
-        Scanner inputScanner = new Scanner(System.in);                          // Creates scanner for getting inputs
 
-        int digitAmount = 0;
-        while (digitAmount > 20 || digitAmount < 2){                            // confirms that 2<=n<=20
-            System.out.print("Enter a number of adjacent digits to multiply between 2 and 20: ");
-            digitAmount = inputScanner.nextInt();                              // Gets number of adjacent digits
-        }
+    public static int problem1(int n, String s){
 
-        String inputString = " ";
-        while(inputString.length() != 1000){                                    // Confirms that s.length() = 1000
-            System.out.print("Enter a string of exactly 1000 digits: ");
-            inputString = inputScanner.next();                                  // gets string of digits
-        }
-        BigInteger inputNumber = new BigInteger(inputString);                   // Creates BigInteger from input string
-
+        BigInteger inputNumber = new BigInteger(s);                             // make input names reader-friendly
+        int digitAmount = n;
         int num;
         int largest = 0;
         int currentTotal;
@@ -33,8 +22,13 @@ public class Problem1 {
 
             for(int i = digitAmount; i>0; i--) {                                // loop that runs n times
                 num = currentBigInt.mod(BigInteger.valueOf(10)).intValue();     //   and multiplies n adjacent numbers
-                currentTotal *= num;
-                currentBigInt = currentBigInt.divide(BigInteger.valueOf(10));
+                if(num != 0) {
+                    currentTotal *= num;
+                    currentBigInt = currentBigInt.divide(BigInteger.valueOf(10));
+                } else {
+                    i = 0;
+                }
+
             }
 
             if(currentTotal > largest){                                         // largest product is replaced
@@ -43,7 +37,7 @@ public class Problem1 {
 
             inputNumber = inputNumber.divide(BigInteger.valueOf(10));           // truncate last digit off BigInteger
         }
-
-        System.out.println("Largest digit: \n" + largest);                      // print and return result
+        System.out.println(largest);
+        return(largest);
     }
 }
